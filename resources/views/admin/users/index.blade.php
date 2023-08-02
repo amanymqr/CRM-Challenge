@@ -1,5 +1,5 @@
 @extends('admin.master')
-{{--  @section('title ' , 'create customer')  --}}
+@section('title', 'All Users')
 @section('content')
 
 <h1 class="h3 mb-4 text-gray-800">All Customers</h1>

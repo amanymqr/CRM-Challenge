@@ -3,10 +3,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+        <div class="sidebar-brand-icon ">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">My Admin </div>
+        <div class="sidebar-brand-text mx-3">CRM Admin </div>
     </a>
 
     <!-- Divider -->
@@ -28,7 +28,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="bi bi-heart-fill"></i>
             <span>Customer</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"

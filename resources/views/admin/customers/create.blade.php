@@ -1,6 +1,6 @@
 
 @extends('admin.master')
-@section('title ' , 'create customer')
+@section('title', 'Create Customer')
 @section('content')
 
 <h3>Create Cutomer</h3>
