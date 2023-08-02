@@ -14,8 +14,13 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::where('user_id', '=', Auth::id())->orderBy('id', 'DESC')->paginate(8);
-        // dd($customers);
+
+        // dd(request()->search);
+        if (request()->search) {
+            $customers = Customer::where('name' , 'like', '%'.request()->search.'%')->where('user_id', '=', Auth::id())->orderBy('id', 'DESC')->paginate(8);
+        } else {
+            $customers = Customer::where('user_id', '=', Auth::id())->orderBy('id', 'DESC')->paginate(8);
+        }
         return view('admin.customers.index', compact('customers'));
     }
 
@@ -96,7 +101,7 @@ class CustomerController extends Controller
         return redirect()->route('admin.customers.index')->with('msg', 'customer deleted successfully')->with('type', 'danger');
     }
 
-//--------------------------------------------
+    //--------------------------------------------
 
     public function trashed()
     {

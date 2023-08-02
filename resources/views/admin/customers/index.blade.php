@@ -9,6 +9,18 @@
     </div>
 @endif
 <h3>All Customers</h3>
+
+    <form action="{{ route('admin.customers.index') }}" method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="search by customer name .." name="search" >
+
+            <button class="btn btn-dark px-4" id="button-addon2">Search</button>
+
+
+        </div>
+    </form>
+
+
 <table class="table table-bordered">
     <thead>
         <tr>

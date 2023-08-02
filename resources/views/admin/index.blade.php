@@ -2,5 +2,5 @@
 @extends('admin.master')
 @section('title ' , 'Dashboard')
 @section('content')
-<title>SB Admin 2 - Blank</title>
+    <h3>CRM Admin</h3>
 @endsection
