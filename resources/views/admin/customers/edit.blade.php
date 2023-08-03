@@ -2,8 +2,9 @@
 @extends('admin.master')
 @section('title ' , 'create customer')
 @section('content')
-
 <h3>Edit Cutomer</h3>
+@include('admin.error')
+
 <form action="{{ route('admin.customers.update', $customers->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')

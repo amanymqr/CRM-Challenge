@@ -40,7 +40,7 @@ class CustomerController extends Controller
             'name' => 'required|string|min:2|max:255',
             'address' => 'nullable',
             'phone' => 'required',
-            'email' => 'required|email|unique:customers,email',
+            'email' => 'required',
 
         ]);
         $request->merge([
@@ -75,7 +75,7 @@ class CustomerController extends Controller
             'name' => 'required|string|min:2|max:255',
             'address' => 'nullable',
             'phone' => 'required',
-            'email' => 'required|string|email|unique:customers,email,' . $id,
+            'email' => 'required',
         ]);
 
         $customer = Customer::findOrFail($id);
