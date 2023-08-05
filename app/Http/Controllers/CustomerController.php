@@ -9,24 +9,24 @@ use Illuminate\Contracts\Validation\Rule;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-
-        // dd(request()->search);
         if (request()->search) {
-            $customers = Customer::where('name' , 'like', '%'.request()->search.'%')->where('user_id', '=', Auth::id())->orderBy('id', 'DESC')->paginate(8);
+            $customers = Customer::searchByName(request()->search)
+                ->currentUser()
+                ->latestFirst()
+                ->paginate(8);
         } else {
-            $customers = Customer::where('user_id', '=', Auth::id())->orderBy('id', 'DESC')->paginate(8);
+            $customers = Customer::currentUser()
+                ->latestFirst()
+                ->paginate(8);
         }
+
         return view('admin.customers.index', compact('customers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.customers.create');
@@ -40,7 +40,7 @@ class CustomerController extends Controller
             'name' => 'required|string|min:2|max:255',
             'address' => 'nullable',
             'phone' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:customers,email',
 
         ]);
         $request->merge([
@@ -50,17 +50,13 @@ class CustomerController extends Controller
         return redirect()->route('admin.customers.index')->with('msg', 'customer created successfully')->with('type', 'primary');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $customers = Customer::findOrFail($id);
@@ -75,7 +71,7 @@ class CustomerController extends Controller
             'name' => 'required|string|min:2|max:255',
             'address' => 'nullable',
             'phone' => 'required',
-            'email' => 'required',
+            'email' => 'required|string|email|unique:customers,email,' . $id,
         ]);
 
         $customer = Customer::findOrFail($id);
